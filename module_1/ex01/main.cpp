@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 16:10:35 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/05/30 22:29:09 by dlacuey          ###   ########.fr       */
+/*   Created: 2024/05/29 20:35:21 by dlacuey           #+#    #+#             */
+/*   Updated: 2024/05/29 21:01:19 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "Zombie.hpp"
 
-Weapon::Weapon(const std::string& type)
-	: type(type)
-{}
-
-const std::string& Weapon::getType()
+int main()
 {
-	return type;
-}
-
-void Weapon::setType( const std::string& newType )
-{
-	type = newType;
+	randomChump("toto");
+	Zombie* lol = newZombie("tata");
+	lol->announce();
+	delete lol;
+	Zombie* horde = zombieHorde(4, "Albert");
+	for(int i = 0; i < 4; i++)
+		horde[i].announce();
+	delete[] horde;
 }

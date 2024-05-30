@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 16:10:35 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/05/30 22:29:09 by dlacuey          ###   ########.fr       */
+/*   Created: 2024/05/29 20:35:21 by dlacuey           #+#    #+#             */
+/*   Updated: 2024/05/29 21:09:37 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include <string>
+#include <iostream>
 
-Weapon::Weapon(const std::string& type)
-	: type(type)
-{}
-
-const std::string& Weapon::getType()
+int main()
 {
-	return type;
-}
+	std::string str = "HI THIS IS BRAIN";
+	std::string* ptr = &str;
+	std::string& ref = str;
 
-void Weapon::setType( const std::string& newType )
-{
-	type = newType;
+	std::cout << &str << "\n";
+	std::cout << ptr << "\n";
+	std::cout << &ref << "\n";
+
+	std::cout << str << "\n";
+	std::cout << *ptr << "\n";
+	std::cout << ref << "\n";
 }
