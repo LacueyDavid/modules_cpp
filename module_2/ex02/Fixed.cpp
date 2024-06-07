@@ -6,12 +6,12 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 23:23:29 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/02 01:24:31 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/07 14:17:44 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
-#include <ostream>
+#include <iostream>
 #include <cmath>
 
 Fixed::Fixed()
@@ -63,8 +63,16 @@ Fixed Fixed::operator*(const Fixed& other)
 
 Fixed Fixed::operator/(const Fixed& other)
 {
-	Fixed newFixedPoint;
-	return newFixedPoint;
+	Fixed result;
+	int64_t x;
+	if (other.getRawBits() == 0)
+	{
+		std::cerr << "Error: Division by zero" << std::endl;
+		return (result);
+	}
+	x = static_cast<int64_t>(this->getRawBits()) * (1 << result.fractionalBits);
+	result.setRawBits(x / other.getRawBits());
+	return result;
 }
 
 bool Fixed::operator==(const Fixed& other) const
@@ -117,4 +125,47 @@ int Fixed::toInt( void ) const
 float Fixed::toFloat( void ) const
 {
 	return static_cast<float>(fixedPoint) / (1 << Fixed::fractionalBits);
+}
+
+Fixed Fixed::operator++(const int)
+{
+	Fixed tmp(*this);
+	tmp.fixedPoint = this->fixedPoint++;
+	return tmp;
+}
+Fixed& Fixed::operator++()
+{
+	++this->fixedPoint;
+	return *this;
+}
+Fixed Fixed::operator--(const int)
+{
+	Fixed tmp(*this);
+	tmp.fixedPoint = this->fixedPoint--;
+	return tmp;
+}
+Fixed& Fixed::operator--()
+{
+	--this->fixedPoint;
+	return *this;
+}
+
+Fixed& Fixed::min(Fixed &a, Fixed &b)
+{
+	return a.getRawBits() < b.getRawBits() ? a : b;
+}
+
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return a.getRawBits() < b.getRawBits() ? a : b;
+}
+
+Fixed& Fixed::max(Fixed &a, Fixed &b)
+{
+	return a.getRawBits() > b.getRawBits() ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return a.getRawBits() > b.getRawBits() ? a : b;
 }

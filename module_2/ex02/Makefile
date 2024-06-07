@@ -6,7 +6,7 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 21:05:04 by dlacuey           #+#    #+#              #
-#    Updated: 2024/06/02 00:46:26 by dlacuey          ###   ########.fr        #
+#    Updated: 2024/06/07 12:29:47 by dlacuey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJS =																		\
 					Fixed.o													\
 																			\
 
-NAME = Now_we_are_talking
+NAME = now_we_are_talking
 
 all: $(NAME)
 

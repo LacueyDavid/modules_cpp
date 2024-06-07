@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 00:32:51 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/02 01:15:48 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/07 12:21:03 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,18 @@ public:
 	bool operator>(const Fixed& other) const;
 	bool operator<=(const Fixed& other) const;
 	bool operator>=(const Fixed& other) const;
-	int getRawBits(void) const;
+	Fixed operator++(const int);
+	Fixed& operator++();
+	Fixed operator--(int);
+	Fixed& operator--();
+	int getRawBits() const;
 	void setRawBits(int const raw);
-	float toFloat( void ) const;
-	int toInt( void ) const;
+	float toFloat() const;
+	int toInt() const;
+	static Fixed& min (Fixed &a, Fixed &b);
+	static const Fixed& min (const Fixed &a, const Fixed &b);
+	static Fixed& max (Fixed &a, Fixed &b);
+	static const Fixed& max (const Fixed &a, const Fixed &b);
 private:
 	int fixedPoint;
 	static const int fractionalBits = 8; // static == appartient a la class (namespace)
