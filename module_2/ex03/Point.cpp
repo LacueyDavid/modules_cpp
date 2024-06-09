@@ -1,28 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 23:31:31 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/09 16:57:39 by dlacuey          ###   ########.fr       */
+/*   Created: 2024/06/09 15:22:53 by dlacuey           #+#    #+#             */
+/*   Updated: 2024/06/09 15:28:17 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "Point.hpp"
 
-int main(void)
+Point::Point(void)
+	: x(0), y(0)
 {
-	Point a(0, 0);
-	Point b(10, 0);
-	Point c(5, 10);
-	Point p(5, 1);
+}
 
-	if (bsp(a,b,c,p))
-		std::cout << "Point is in the triangle" << std::endl;
-	else
-		std::cout << "Point is not in the triangle" << std::endl;
-	return 0;
+Point::Point(const float x, const float y)
+	: x(x), y(y)
+{
+}
+
+Point::Point(const Point &src)
+	: x(src.x), y(src.y)
+{
+}
+
+Point::~Point()
+{
+}
+
+Point& Point::operator=(const Point &rhs)
+{
+	if (this != &rhs)
+	{
+		(Fixed) x = rhs.getX();
+		(Fixed) y = rhs.getY();
+	}
+	return *this;
+}
+
+Fixed Point::getX(void) const
+{
+	return x;
+}
+
+Fixed Point::getY(void) const
+{
+	return y;
 }

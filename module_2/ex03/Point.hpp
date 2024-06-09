@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/01 23:31:31 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/09 16:57:39 by dlacuey          ###   ########.fr       */
+/*   Created: 2024/06/09 15:15:03 by dlacuey           #+#    #+#             */
+/*   Updated: 2024/06/09 15:22:35 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Point.hpp"
+#ifndef POINT_HPP
+# define POINT_HPP
 
-int main(void)
+#include "Fixed.hpp"
+
+class Point
 {
-	Point a(0, 0);
-	Point b(10, 0);
-	Point c(5, 10);
-	Point p(5, 1);
+public:
+	Point();
+	Point(const float x, const float y);
+	Point(const Point &src);
+	~Point();
 
-	if (bsp(a,b,c,p))
-		std::cout << "Point is in the triangle" << std::endl;
-	else
-		std::cout << "Point is not in the triangle" << std::endl;
-	return 0;
-}
+	Point& operator=(const Point &rhs);
+
+	Fixed getX(void) const;
+	Fixed getY(void) const;
+private:
+	const Fixed x;
+	const Fixed y;
+};
+
+bool bsp(Point const a, Point const b, Point const c, Point const point);
+
+#endif

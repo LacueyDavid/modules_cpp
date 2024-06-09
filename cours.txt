@@ -1,0 +1,37 @@
+item 1 de effective c++
+
+view c++ as a federation of 4 languages
+
+- Héritage du C (builtin types, functions, array, pointers...)
+- (OOP) Object oriented programming ( classes, héritage...) **a sa sauce**
+- Template metaprogramming (generic programming)
+- STL (Standard Template Library)
+
+
+# Types de classes:
+
+classe "classique" (du metier, du domaine)
+* all data members are private
+* dont redefine special methods (copy constructor, destructor, yadda yadda)...
+* Allocated on the stack, why would you want to new it? fuck pointers
+
+POD : plain of data
+sac de variables, juste une putain de struct
+on met tout en public, de toute facon ya aucun invariant a respecter
+
+ressources handlers ("smart pointers")
+gerent le cycle de vie d'une ressource
+(memoire sur la heap, mutex...)
+dédiés a ca, pas de metier
+toute l'intelligence est dans le ctor, copy ctor, coppy-assign, dtor...
+
+class hierarchies, machin avec heritage
+des classes qui heritent d'autres classes (faites pour etre heritees)
+toujours manipulées par pointeur/reference (via new/delete)
+des machins virtuels
+plein de regles tres differentes des autres classes:
+- dtor doit etre virtuel
+- desactiver le copy ctor
+- ...
+a ne pas melanger avec les classes "classiques" !
+

@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 23:23:29 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/07 12:25:20 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/09 16:34:25 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@ Fixed::Fixed(const Fixed& other)
 	: fixedPoint(other.fixedPoint)
 {
 
+}
+
+const Fixed Fixed::one()
+{
+	return Fixed(1);
+}
+
+const Fixed Fixed::zero()
+{
+	return Fixed(0);
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
