@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 17:34:39 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/11 09:22:51 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/12 03:48:13 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ public:
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	ClapTrap(std::string name);
-	ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackDamage);
+	ClapTrap(std::string name, unsigned int hitPoints,
+			unsigned int energyPoints, unsigned int attackDamage);
 	~ClapTrap();
 	unsigned int hp() { return hitPoints; }
 	unsigned int energy() { return energyPoints; }
