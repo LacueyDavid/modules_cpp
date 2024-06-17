@@ -6,25 +6,28 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 03:37:54 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/11 09:23:39 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/13 19:43:48 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 #include "ScavTrap.hpp"
-#include <iostream>
+#include "ClapTrap.hpp"
 
 int main()
 {
-	ClapTrap clap("ClapTrap");
-	clap.attack("target");
-	clap.takeDamage(3);
-	clap.beRepaired(2);
-	ScavTrap scav("paul");
-	scav.attack("Michou");
-	scav.guardGate();
-	std::cout << scav.damage() << "\n";;
-	std::cout << scav.hp() << "\n";;
-	std::cout << scav.energy() << "\n";;
+	FragTrap jean("Jean");
+	ScavTrap ok("oui");
+	ClapTrap *haru = new ClapTrap("haru");
+	ClapTrap *mouse = new FragTrap("mouse");
+	ClapTrap *kad = new ScavTrap("kad");
+	haru->attack("mouse");
+	mouse->attack("kad");
+	kad->attack("mouse");
+	// jean.attack("target");
+	// FragTrap david("David");
+	// FragTrap ludo("Ludo");
+	// FragTrap thibaut("Thibaut");
+	// FragTrap pierre("PIERRE");
 	return 0;
 }

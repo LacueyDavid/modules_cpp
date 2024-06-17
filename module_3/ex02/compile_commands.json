@@ -1,0 +1,66 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "main.o",
+      "main.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02/main.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "ClapTrap.o",
+      "ClapTrap.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02/ClapTrap.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02/ClapTrap.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "ScavTrap.o",
+      "ScavTrap.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02/ScavTrap.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02/ScavTrap.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "FragTrap.o",
+      "FragTrap.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02/FragTrap.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_3/ex02/FragTrap.o"
+  }
+]
