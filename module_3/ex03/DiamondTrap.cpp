@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/13 23:20:11 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/17 07:35:17 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 DiamondTrap::DiamondTrap(const std::string &myName)
 	: ClapTrap(myName + "_clap_name")
-	, ScavTrap("kad")
-	, FragTrap("mouse")
-	, name("test")
+	, ScavTrap(myName)
+	, FragTrap(myName)
+	, name(myName)
 {
 	std::cout << name << " CTOR DIAMONDTRAP\n";
 	// std::cout << ClapTrap::name << " CTOR DIAMONDTRAP CLAPTRAP NAME\n";
