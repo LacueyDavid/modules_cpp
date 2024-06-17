@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/17 07:35:17 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/17 14:01:18 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ DiamondTrap::~DiamondTrap()
 void	DiamondTrap::attack(const std::string &target)
 {
 	ScavTrap::attack(target);
+}
+
+void	DiamondTrap::whoAmI()
+{
+	std::cout << "My name is " << name << std::endl;
+	std::cout << "My ClapTrap name is " << ClapTrap::name << std::endl;
+}
+
+void	DiamondTrap::printStats()
+{
+	std::cout << "hit points: " << hitPoints << "\n";
+	std::cout << "energy points: " << energyPoints << "\n";
+	std::cout << "damage: " << attackDamage << "\n";
 }
 
 // 0: polymorphisme cest une maniere davoir de la genericité
