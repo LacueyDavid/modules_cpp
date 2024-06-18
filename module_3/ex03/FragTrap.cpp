@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/13 21:07:42 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/18 15:49:45 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 
 FragTrap::FragTrap(const std::string &name)
-	: ClapTrap(name, 100, 100, 30)
+	: ClapTrap(name, initial_hp, initial_energy, initial_damage)
 {
 	std::cout << name << " CTOR FRAGTRAP\n";
 }

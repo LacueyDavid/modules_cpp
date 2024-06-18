@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/17 14:01:18 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/18 15:54:59 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iostream>
 
 DiamondTrap::DiamondTrap(const std::string &myName)
-	: ClapTrap(myName + "_clap_name")
+	: ClapTrap(myName + "_clap_name", initial_hp, initial_energy, initial_damage)
 	, ScavTrap(myName)
 	, FragTrap(myName)
 	, name(myName)

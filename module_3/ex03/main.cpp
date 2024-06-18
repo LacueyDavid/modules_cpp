@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 03:37:54 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/13 20:20:17 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/18 15:59:59 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,8 @@ int main()
 	// FragTrap thibaut("Thibaut");
 	// FragTrap pierre("PIERRE");
 	DiamondTrap diam("diam");
+	diam.printStats();
+	diam.whoAmI();
+	diam.attack("benoit");
 	return 0;
 }

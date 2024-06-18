@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/13 23:05:10 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/18 15:50:38 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <iostream>
 
 ScavTrap::ScavTrap(const std::string &name)
-	: ClapTrap(name, 100, 50, 20)
+	: ClapTrap(name, initial_hp, initial_energy, initial_damage)
 {
 	std::cout << name << " CTOR SCAVTRAP\n";
 }

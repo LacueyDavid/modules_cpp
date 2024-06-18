@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:38:35 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/13 23:01:53 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/18 15:49:53 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ public:
 	virtual ~ScavTrap();
 	virtual void attack(const std::string &target);
 	void guardGate();
+protected:
+	static const unsigned int initial_hp = 100;
+	static const unsigned int initial_energy = 50;
+	static const unsigned int initial_damage = 20;
 private:
 	ScavTrap (const ScavTrap &);
 	ScavTrap &operator=(const ScavTrap &);
