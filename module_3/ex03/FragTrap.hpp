@@ -6,30 +6,31 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:38:35 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/18 15:49:11 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/26 10:05:01 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
-#include <string>
 #include "ClapTrap.hpp"
+#include <string>
 
 class FragTrap : virtual public ClapTrap
 {
-public:
+  public:
+	FragTrap();
 	FragTrap(const std::string &name);
 	virtual ~FragTrap();
 	virtual void attack(const std::string &target);
-	void highFivesGuys();
-protected:
+	void         highFivesGuys();
+	FragTrap(const FragTrap &other);
+	FragTrap &operator=(const FragTrap &other);
+
+  protected:
 	static const unsigned int initial_hp = 100;
 	static const unsigned int initial_energy = 100;
 	static const unsigned int initial_damage = 30;
-private:
-	FragTrap (const FragTrap &);
-	FragTrap &operator=(const FragTrap &);
 };
 
 #endif

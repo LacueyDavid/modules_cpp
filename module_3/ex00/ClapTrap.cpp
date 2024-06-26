@@ -6,12 +6,36 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 02:35:38 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/11 03:42:23 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/26 07:29:41 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "ClapTrap.hpp"
+
+ClapTrap::ClapTrap(){}
+
+ClapTrap::ClapTrap(const ClapTrap& other)
+	: name(other.name)
+	, hitPoints(other.hitPoints)
+	, energyPoints(other.energyPoints)
+	, attackDamage(other.attackDamage)
+{
+	std::cout << "copy constructor called.\n";
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap& other)
+{
+	//toujours protéger lui meme
+	if (this == &other)
+		return *this;
+	name = other.name;
+	hitPoints = other.hitPoints;
+	energyPoints = other.energyPoints;
+	attackDamage = other.attackDamage;
+	// return *this pour le chaining
+	return *this;
+}
 
 ClapTrap::ClapTrap(std::string name)
 	: name(name)

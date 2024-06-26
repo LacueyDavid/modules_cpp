@@ -6,12 +6,29 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/18 15:49:45 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/26 10:15:45 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include <iostream>
+
+FragTrap::FragTrap(){}
+
+FragTrap::FragTrap(const FragTrap &other)
+	: ClapTrap(other)
+{}
+
+FragTrap &FragTrap::operator=(const FragTrap &other)
+{
+	if (this == &other)
+		return *this;
+	name = other.name;
+	hitPoints = other.hitPoints;
+	energyPoints = other.energyPoints;
+	attackDamage = other.attackDamage;
+	return *this;
+}
 
 FragTrap::FragTrap(const std::string &name)
 	: ClapTrap(name, initial_hp, initial_energy, initial_damage)

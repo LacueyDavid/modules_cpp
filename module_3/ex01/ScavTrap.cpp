@@ -6,12 +6,29 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/11 09:19:49 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/26 10:17:52 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include <iostream>
+
+ScavTrap::ScavTrap(){}
+
+ScavTrap::ScavTrap(const ScavTrap &other)
+	: ClapTrap(other)
+{}
+
+ScavTrap &ScavTrap::operator=(const ScavTrap &other)
+{
+	if (this == &other)
+		return *this;
+	name = other.name;
+	hitPoints = other.hitPoints;
+	energyPoints = other.energyPoints;
+	attackDamage = other.attackDamage;
+	return *this;
+}
 
 ScavTrap::ScavTrap(const std::string &name)
 	: ClapTrap(name, 100, 50, 20)

@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:38:35 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/18 15:58:46 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/26 10:11:26 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@
 class DiamondTrap: public ScavTrap, public FragTrap
 {
 public:
+	DiamondTrap();
 	DiamondTrap(const std::string &name);
 	virtual ~DiamondTrap();
 	void attack(const std::string &target);
 	void whoAmI();
 	void printStats();
+	DiamondTrap (const DiamondTrap &other);
+	DiamondTrap &operator=(const DiamondTrap &other);
 protected:
 	static const unsigned int initial_hp = FragTrap::initial_hp;
 	static const unsigned int initial_energy = ScavTrap::initial_energy;
@@ -34,8 +37,6 @@ private:
 					  //literalement 2 different
 					  //ne pas faire car shadowing, name cache claptrap::name
 					  //car un seul peut etre nommé sans le ::
-	DiamondTrap (const DiamondTrap &);
-	DiamondTrap &operator=(const DiamondTrap &);
 };
 
 #endif
