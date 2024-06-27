@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:34:45 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/24 09:41:32 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/26 11:18:28 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ public:
 	virtual void makeSound() const; // si une instance de la class est const,
 									// elle ne pourra appeler que ces methodes
 									// const
-private:
 	Dog(const Dog& other);
-	Dog operator=(const Dog& other);
+	Dog &operator=(const Dog &other);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:34:07 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/24 09:41:05 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/26 11:17:32 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ public:
 	Cat();
 	virtual ~Cat();
 	virtual void makeSound() const;
-private:
 	Cat(const Cat& other);
-	Cat operator=(const Cat& other);
+	Cat &operator=(const Cat& other);
 };
 
 #endif

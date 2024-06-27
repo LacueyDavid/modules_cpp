@@ -6,7 +6,7 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 21:05:04 by dlacuey           #+#    #+#              #
-#    Updated: 2024/06/24 09:38:52 by dlacuey          ###   ########.fr        #
+#    Updated: 2024/06/26 11:40:50 by dlacuey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ OBJS =																		\
 					animals.o												\
 					cat.o													\
 					dog.o													\
+					WrongAnimal.o											\
+					WrongCat.o												\
 																			\
 
 NAME = polymorphism

@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.cpp                                            :+:      :+:    :+:   */
+/*   cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 09:35:57 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/24 09:48:51 by dlacuey          ###   ########.fr       */
+/*   Created: 2024/06/24 09:34:07 by dlacuey           #+#    #+#             */
+/*   Updated: 2024/06/27 11:31:02 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cat.hpp"
-#include <iostream>
+#ifndef CAT_HPP
+#define CAT_HPP
 
-Cat::Cat()
-	: Animal("Cat")
-{
-	brain = new Brain();
-	std::cout << "CTOR CAT\n";
-}
+#include "animals.hpp"
+#include "brain.hpp"
 
-void Cat::makeSound() const
+class Cat : public Animal
 {
-	std::cout << "Meow.\n";
-}
+public:
+	Cat();
+	virtual ~Cat();
+	virtual void makeSound() const;
+	Cat(const Cat& other);
+	Cat &operator=(const Cat& other);
+	void setIdea(const std::string &idea, int index);
+	std::string	getIdea(int index);
+private:
+	Brain* brain;
+};
 
-Cat::~Cat()
-{
-	delete(brain);
-	std::cout << "DTOR CAT.\n";
-}
+#endif

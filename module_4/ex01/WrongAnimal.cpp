@@ -1,41 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 09:35:57 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/26 11:20:59 by dlacuey          ###   ########.fr       */
+/*   Created: 2024/06/24 00:30:27 by dlacuey           #+#    #+#             */
+/*   Updated: 2024/06/26 11:38:26 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cat.hpp"
+#include "WrongAnimal.hpp"
 #include <iostream>
 
-Cat::Cat(const Cat& other)
-	: Animal(other.type)
+Wronganimal::Wronganimal(){}
+
+Wronganimal::Wronganimal(const Wronganimal& other)
+	: type(other.type)
 {}
 
-Cat &Cat::operator=(const Cat& other)
+Wronganimal &Wronganimal::operator=(const Wronganimal &other)
 {
 	if (this != &other)
 		type = other.type;
 	return *this;
 }
 
-Cat::Cat()
-	: Animal("Cat")
+Wronganimal::Wronganimal(const std::string& type)
+	: type(type)
 {
-	std::cout << "CTOR CAT\n";
 }
 
-void Cat::makeSound() const
+Wronganimal::~Wronganimal()
 {
-	std::cout << "Meow.\n";
+	std::cout << "DTOR WRONGANIMAL.\n";
 }
 
-Cat::~Cat()
+void Wronganimal::makeSound() const
 {
-	std::cout << "DTOR CAT.\n";
+	std::cout << "test concluant\n";
+}
+
+std::string Wronganimal::getType() const
+{
+	return type;
 }

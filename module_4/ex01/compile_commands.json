@@ -1,1 +1,114 @@
-[]
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "main.o",
+      "main.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/main.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "animals.o",
+      "animals.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/animals.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/animals.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "cat.o",
+      "cat.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/cat.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/cat.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "dog.o",
+      "dog.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/dog.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/dog.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "WrongAnimal.o",
+      "WrongAnimal.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/WrongAnimal.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/WrongAnimal.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "WrongCat.o",
+      "WrongCat.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/WrongCat.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/WrongCat.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-c",
+      "-o",
+      "brain.o",
+      "brain.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01",
+    "file": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/brain.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/modules_cpp/module_4/ex01/brain.o"
+  }
+]

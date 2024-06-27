@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 09:35:57 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/26 11:20:59 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/26 11:40:14 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cat.hpp"
+#include "WrongCat.hpp"
 #include <iostream>
 
-Cat::Cat(const Cat& other)
-	: Animal(other.type)
+Wrongcat::Wrongcat(const Wrongcat& other)
+	: Wronganimal(other.type)
 {}
 
-Cat &Cat::operator=(const Cat& other)
+Wrongcat &Wrongcat::operator=(const Wrongcat& other)
 {
 	if (this != &other)
 		type = other.type;
 	return *this;
 }
 
-Cat::Cat()
-	: Animal("Cat")
+Wrongcat::Wrongcat()
+	: Wronganimal("Wrongcat")
 {
-	std::cout << "CTOR CAT\n";
+	std::cout << "CTOR Wrongcat\n";
 }
 
-void Cat::makeSound() const
+void Wrongcat::makeSound() const
 {
-	std::cout << "Meow.\n";
+	std::cout << "Wrong Meow.\n";
 }
 
-Cat::~Cat()
+Wrongcat::~Wrongcat()
 {
-	std::cout << "DTOR CAT.\n";
+	std::cout << "DTOR Wrongcat.\n";
 }

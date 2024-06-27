@@ -6,7 +6,7 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 21:05:04 by dlacuey           #+#    #+#              #
-#    Updated: 2024/06/24 09:07:22 by dlacuey          ###   ########.fr        #
+#    Updated: 2024/06/27 11:21:02 by dlacuey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,11 @@ OBJS =																		\
 																			\
 					main.o													\
 					animals.o												\
+					cat.o													\
+					dog.o													\
+					WrongAnimal.o											\
+					WrongCat.o												\
+					brain.o													\
 																			\
 
 NAME = iDontWantToSetTheWorldOnFire

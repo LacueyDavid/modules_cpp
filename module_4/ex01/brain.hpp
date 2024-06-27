@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dog.hpp                                            :+:      :+:    :+:   */
+/*   brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 09:34:45 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/24 09:48:04 by dlacuey          ###   ########.fr       */
+/*   Created: 2024/06/24 09:45:09 by dlacuey           #+#    #+#             */
+/*   Updated: 2024/06/27 09:05:25 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-#include "animals.hpp"
-#include "brain.hpp"
+#include <string>
 
-class Dog : public Animal
+class Brain
 {
 public:
-	Dog();
-	virtual ~Dog();
-	virtual void makeSound() const; // si une instance de la class est const,
-									// elle ne pourra appeler que ces methodes
-									// const
+	Brain();
+	~Brain();
+	Brain(const Brain& other);
+	Brain &operator=(const Brain &other);
+	void setIdea(const std::string &idea, int index);
+	std::string getIdea(int index);
+
 private:
-	Dog(const Dog& other);
-	Dog operator=(const Dog& other);
-	Brain* brain;
+	std::string ideas[100];
 };
 
 #endif
