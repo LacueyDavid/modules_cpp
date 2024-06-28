@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 23:23:33 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/28 10:06:21 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:46:51 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int main()
 
 	Cat jaja(jojo);
 	std::cout << "jaja: " << jaja.getIdea(4) << "\n";
-
 
 	for(size_t i = 0; i < 20; ++i)
 		delete(animals[i]);
