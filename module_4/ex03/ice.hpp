@@ -19,12 +19,12 @@ class Ice : public AMateria
 {
 public:
 	Ice();
-	Ice(const Ice &other);
 	virtual ~Ice();
 	Ice &operator=(const Ice &other);
 	Ice* clone() const;
 	void use(ICharacter& target);
 private:
+	Ice(const Ice &other);
 };
 
 #endif

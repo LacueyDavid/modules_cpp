@@ -6,12 +6,14 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:24:22 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/03 17:48:20 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/05 22:41:47 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cure.hpp"
 #include <iostream>
+
+#include "cure.hpp"
+#include "icharacter.hpp"
 
 Cure::Cure()
 	: AMateria("cure")
@@ -33,7 +35,7 @@ Cure &Cure::operator=(const Cure &other)
 Cure* Cure::clone() const
 {
 	Cure *clone;
-	clone = new Cure();
+	clone = new Cure(*this);
 	return clone;
 }
 

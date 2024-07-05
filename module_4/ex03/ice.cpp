@@ -6,12 +6,14 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:24:20 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/03 17:44:15 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/05 22:42:03 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ice.hpp"
 #include <iostream>
+
+#include "ice.hpp"
+#include "icharacter.hpp"
 
 Ice::Ice()
 	: AMateria("ice")
@@ -33,7 +35,7 @@ Ice &Ice::operator=(const Ice &other)
 Ice* Ice::clone() const
 {
 	Ice *clone;
-	clone = new Ice();
+	clone = new Ice(*this);
 	return clone;
 }
 

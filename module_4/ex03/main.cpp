@@ -6,9 +6,16 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:35:40 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/28 14:36:06 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/05 22:54:27 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "imateriasource.hpp"
+#include "character.hpp"
+#include "materiasource.hpp"
+#include "ice.hpp"
+#include "cure.hpp"
+#include "icharacter.hpp"
 
 int main()
 {

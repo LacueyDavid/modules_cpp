@@ -6,12 +6,14 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 14:28:30 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/03 17:17:09 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/05 22:38:35 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "amateria.hpp"
 #include <iostream>
+
+#include "amateria.hpp"
+#include "icharacter.hpp"
 
 AMateria::AMateria()
 	: type("default")

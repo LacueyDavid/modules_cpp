@@ -19,11 +19,12 @@ class MateriaSource : public IMateriaSource
 {
 public:
 	MateriaSource();
-	~MateriaSource();
+	virtual ~MateriaSource();
 	MateriaSource(const MateriaSource &other);
-	MateriaSource &operator=(const MateriaSource &other);
-	void learnMateria(AMateria *materia);
-	AMateria *createMateria(const std::string &type);
+	MateriaSource &operator=(MateriaSource other);
+	virtual void learnMateria(AMateria *materia);
+	virtual AMateria *createMateria(const std::string &type);
+	void swap(MateriaSource& other);
 private:
 	AMateria *materias[4];
 };

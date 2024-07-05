@@ -19,12 +19,12 @@ class Cure : public AMateria
 {
 public:
 	Cure();
-	Cure(const Cure &other);
 	virtual ~Cure();
 	Cure &operator=(const Cure &other);
 	Cure* clone() const;
 	void use(ICharacter& target);
 private:
+	Cure(const Cure &other);
 };
 
 #endif
