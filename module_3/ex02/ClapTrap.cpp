@@ -6,14 +6,18 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 02:35:38 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/26 07:39:06 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:26:14 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(){}
+ClapTrap::ClapTrap()
+	: hitPoints(10)
+	, energyPoints(10)
+	, attackDamage(0)
+{}
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 	: name(other.name)

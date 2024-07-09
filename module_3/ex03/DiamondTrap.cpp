@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/26 10:14:59 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:32:02 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 #include "DiamondTrap.hpp"
 #include <iostream>
 
-DiamondTrap::DiamondTrap(){}
+DiamondTrap::DiamondTrap()
+	: ClapTrap("default_clap_name", initial_hp, initial_energy, initial_damage)
+	, ScavTrap()
+	, FragTrap()
+{}
 
 DiamondTrap::DiamondTrap(const DiamondTrap& other)
 	:	ClapTrap(other), ScavTrap(other), FragTrap(other), name(other.name)

@@ -6,14 +6,16 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/26 10:15:24 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:28:15 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap(){}
+ScavTrap::ScavTrap()
+	: ClapTrap("default", 100, 50, 20)
+{}
 
 ScavTrap::ScavTrap(const ScavTrap &other)
 	: ClapTrap(other)

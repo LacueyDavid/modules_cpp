@@ -6,14 +6,16 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 07:39:26 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/06/26 10:15:45 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:28:03 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include <iostream>
 
-FragTrap::FragTrap(){}
+FragTrap::FragTrap()
+	: ClapTrap("default", 100, 100, 30)
+{}
 
 FragTrap::FragTrap(const FragTrap &other)
 	: ClapTrap(other)
