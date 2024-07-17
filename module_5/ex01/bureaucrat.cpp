@@ -6,10 +6,11 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 15:24:25 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/06 16:36:21 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/16 22:59:11 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "form.hpp"
 #include "bureaucrat.hpp"
 #include <iostream>
 
@@ -51,14 +52,22 @@ std::ostream& operator<<(std::ostream& ostr, const Bureaucrat& b)
 	return ostr;
 }
 
-Bureaucrat::Bureaucrat(){}
+Bureaucrat::Bureaucrat()
+	: name("default")
+	, grade(lowest_grade)
+{}
 
 Bureaucrat::~Bureaucrat(){}
 
 Bureaucrat::Bureaucrat(std::string name, size_t grade)
 	: name(name)
 	, grade(grade)
-{}
+{
+	if (grade < highest_grade)
+		throw GradeTooHighException();
+	if (grade > lowest_grade)
+		throw GradeTooLowException();
+}
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other)
 	: name(other.name)
@@ -78,3 +87,16 @@ Bureaucrat::GradeTooLowException::GradeTooLowException()
 Bureaucrat::GradeTooHighException::GradeTooHighException()
 	: std::domain_error("Grade too high.")
 {}
+
+void Bureaucrat::signForm(Form &f)
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout << *this << " signed " << f << "\n";
+	}
+	catch (const Form::GradeTooLowException &e)
+	{
+		std::cout << *this << " couldn't sign " << f << " because " << e.what() << "\n";
+	}
+}

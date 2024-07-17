@@ -6,10 +6,11 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 15:24:25 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/16 14:43:49 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/16 23:22:48 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "aform.hpp"
 #include "bureaucrat.hpp"
 #include <iostream>
 
@@ -51,7 +52,10 @@ std::ostream& operator<<(std::ostream& ostr, const Bureaucrat& b)
 	return ostr;
 }
 
-Bureaucrat::Bureaucrat(){}
+Bureaucrat::Bureaucrat()
+	: name("default")
+	, grade(lowest_grade)
+{}
 
 Bureaucrat::~Bureaucrat(){}
 
@@ -83,3 +87,29 @@ Bureaucrat::GradeTooLowException::GradeTooLowException()
 Bureaucrat::GradeTooHighException::GradeTooHighException()
 	: std::domain_error("Grade too high.")
 {}
+
+void Bureaucrat::signForm(AForm &f)
+{
+	try
+	{
+		f.beSigned(*this);
+		std::cout << *this << " signed " << f << "\n";
+	}
+	catch (const AForm::GradeTooLowException &e)
+	{
+		std::cout << *this << " couldn't sign " << f << " because " << e.what() << "\n";
+	}
+}
+
+void Bureaucrat::executeForm(const AForm &f)
+{
+	try
+	{
+		f.execute(*this);
+		std::cout << *this << " executed " << f << "\n";
+	}
+	catch (const AForm::GradeTooLowException &e)
+	{
+		std::cout << *this << " couldn't execute " << f << " because " << e.what() << "\n";
+	}
+}

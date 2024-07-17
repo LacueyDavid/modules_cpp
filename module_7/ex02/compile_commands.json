@@ -1,0 +1,19 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g",
+      "-c",
+      "-o",
+      "main.o",
+      "main.cpp"
+    ],
+    "directory": "/home/haru/42/common_core/modules_cpp/module_7/ex02",
+    "file": "/home/haru/42/common_core/modules_cpp/module_7/ex02/main.cpp",
+    "output": "/home/haru/42/common_core/modules_cpp/module_7/ex02/main.o"
+  }
+]

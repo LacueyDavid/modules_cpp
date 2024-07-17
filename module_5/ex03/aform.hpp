@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   aform.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/05 22:58:46 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/16 22:39:17 by dlacuey          ###   ########.fr       */
+/*   Created: 2024/07/06 16:43:59 by dlacuey           #+#    #+#             */
+/*   Updated: 2024/07/17 00:44:38 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include <string>
-#include <iosfwd>
 #include <stdexcept>
-#include "form.hpp"
 
-class Bureaucrat
+class Bureaucrat;
+
+class AForm
 {
 public:
-	size_t getGrade() const; // si la methode modifie rien, const a la fin
 	const std::string& getName() const;
-	void upGrade();
-	void downGrade();
-	void signForm(Form &);
-	Bureaucrat();
-	~Bureaucrat();
-	Bureaucrat(std::string name, size_t grade);
-	Bureaucrat(const Bureaucrat& other);
-	void swap(Bureaucrat& other);
+	size_t getIsSigned() const;
+	size_t getGradeToSign() const;
+	size_t getGradeToExecute() const;
+	void beSigned(const Bureaucrat& b);
+	void swap(AForm& other);
+	AForm();
+	virtual ~AForm();
+	AForm(std::string name, size_t gradeToSign, size_t gradeToExecute);
+	AForm(const AForm& other);
+
+	void execute(const Bureaucrat& b) const;
+
+	virtual AForm* clone() const = 0;
+
 	class GradeTooHighException: public std::domain_error
 	{
 	public:
@@ -42,14 +47,23 @@ public:
 		GradeTooLowException();
 	};
 private:
-	Bureaucrat &operator=(Bureaucrat other); // function membre car on
-													// utilise this
+	virtual void do_execute() const = 0;
 	const std::string name;
-	size_t grade;
+	bool isSigned;
+	const size_t gradeToSign;
+	const size_t gradeToExecute;
 	static const size_t highest_grade = 1;
 	static const size_t lowest_grade = 150;
 };
 
-std::ostream& operator<<(std::ostream& ostr, const Bureaucrat& b);
+std::ostream& operator<<(std::ostream& ostr, const AForm& f); // pour print les
+															 // infos
+
+// TODO
+//
+// exception throw
+//
+// 
+//
 
 #endif

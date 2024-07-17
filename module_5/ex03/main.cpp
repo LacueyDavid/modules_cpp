@@ -6,12 +6,16 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 16:28:53 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/16 22:58:13 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/17 01:19:19 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "bureaucrat.hpp"
+#include "shrubbery_creation_form.hpp"
+#include "presidential_pardon_form.hpp"
+#include "robotomy_request_form.hpp"
+#include "intern.hpp"
 
 int main()
 {
@@ -25,11 +29,25 @@ int main()
 	{
 		std::cout << "I catch : " << e.what() << "\n";
 	}
-	Form f("myform", 42, 51);
-
 	Bureaucrat too_low("Hubert", 99);
-	too_low.signForm(f);
-	rang_1.signForm(f);
 	rang_1.downGrade();
 	std::cout << rang_1 << "\n";
+	ShrubberyCreationForm f2("david");
+	rang_1.signForm(f2);
+	rang_1.executeForm(f2);
+	PresidentialPardonForm f3("benoit");
+	rang_1.signForm(f3);
+	rang_1.executeForm(f3);
+	RobotomyRequestForm f4("kevin");
+	rang_1.signForm(f4);
+	rang_1.executeForm(f4);
+
+	Intern i;
+
+	AForm* f = i.makeForm("presidential pardon", "jeanmich");
+	std::cout << *f << "\n";
+	delete f;
+
+	AForm* lol = i.makeForm("non existing", "jeanmich");
+	delete lol;
 }

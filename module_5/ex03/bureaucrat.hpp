@@ -6,7 +6,7 @@
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 22:58:46 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/16 22:39:17 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/16 23:21:06 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <string>
 #include <iosfwd>
 #include <stdexcept>
-#include "form.hpp"
+#include "aform.hpp"
 
 class Bureaucrat
 {
@@ -25,7 +25,8 @@ public:
 	const std::string& getName() const;
 	void upGrade();
 	void downGrade();
-	void signForm(Form &);
+	void signForm(AForm &);
+	void executeForm(const AForm &);
 	Bureaucrat();
 	~Bureaucrat();
 	Bureaucrat(std::string name, size_t grade);

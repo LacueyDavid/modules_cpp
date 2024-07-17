@@ -1,57 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   form.cpp                                           :+:      :+:    :+:   */
+/*   aform.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dlacuey <dlacuey@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 15:24:25 by dlacuey           #+#    #+#             */
-/*   Updated: 2024/07/16 22:58:49 by dlacuey          ###   ########.fr       */
+/*   Updated: 2024/07/17 00:02:59 by dlacuey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "form.hpp"
+#include "aform.hpp"
 #include "bureaucrat.hpp"
 #include <iostream>
 
-size_t Form::getGradeToSign() const
+size_t AForm::getGradeToSign() const
 {
 	return gradeToSign;
 }
 
-size_t Form::getGradeToExecute() const
+size_t AForm::getGradeToExecute() const
 {
 	return gradeToExecute;
 }
 
-size_t Form::getIsSigned() const
+size_t AForm::getIsSigned() const
 {
 	return isSigned;
 }
 
-const std::string& Form::getName() const// pour la perf, ne pas faire une copy
+const std::string& AForm::getName() const// pour la perf, ne pas faire une copy
 										 // si on veut une copy local, call
 										 // copy const
 {
 	return name;
 }
 
-
-Form &Form::operator=(Form other)
+std::ostream& operator<<(std::ostream& ostr, const AForm& b)
 {
-	swap(other);
-	return *this;
-}
-
-std::ostream& operator<<(std::ostream& ostr, const Form& b)
-{
-	ostr << b.getName() << ", Form gradeToExecute " << b.getGradeToExecute()
+	ostr << b.getName() << ", AForm gradeToExecute " << b.getGradeToExecute()
 		<< " GradeToSign " << b.getGradeToSign() << " signed status "
 		<< b.getIsSigned();
 	return ostr;
 }
 
-Form::Form()
+AForm::AForm()
 	: name("default") // initialiser dans le meme ordre que la declaration dans
 					  // le hpp
 	, isSigned(0)
@@ -59,9 +52,9 @@ Form::Form()
 	, gradeToExecute(lowest_grade)
 {}
 
-Form::~Form(){}
+AForm::~AForm(){}
 
-Form::Form(std::string name, size_t gradeToSign, size_t gradeToExecute)
+AForm::AForm(std::string name, size_t gradeToSign, size_t gradeToExecute)
 	: name(name)
 	, isSigned(0)
 	, gradeToSign(gradeToSign)
@@ -73,30 +66,31 @@ Form::Form(std::string name, size_t gradeToSign, size_t gradeToExecute)
 		throw GradeTooLowException();
 }
 
-Form::Form(const Form& other)
+AForm::AForm(const AForm& other)
 	: name(other.name)
 	, isSigned(other.isSigned)
 	, gradeToSign(other.gradeToSign)
 	, gradeToExecute(other.gradeToExecute)
 {}
 
-void Form::swap(__attribute__((unused)) Form& other)
-{
-	// std::swap(name, other.name);
-	// std::swap(grade, other.grade);
-}
-
-Form::GradeTooLowException::GradeTooLowException()
+AForm::GradeTooLowException::GradeTooLowException()
 	: std::domain_error("Grade too low.")
 {}
 
-Form::GradeTooHighException::GradeTooHighException()
+AForm::GradeTooHighException::GradeTooHighException()
 	: std::domain_error("Grade too high.")
 {}
 
-void Form::beSigned(const Bureaucrat& b)
+void AForm::beSigned(const Bureaucrat& b)
 {
 	if (b.getGrade() > gradeToSign)
 		throw GradeTooLowException();
 	isSigned = true;
+}
+
+void AForm::execute(const Bureaucrat& b) const
+{
+	if (b.getGrade() > gradeToExecute)
+		throw GradeTooLowException();
+	do_execute();
 }
