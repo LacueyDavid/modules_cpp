@@ -1,0 +1,9 @@
+4 types de cast
+
+const_cast : enleve le const d'une variable
+
+static_cast : cast classique, transforme un type en un autre
+
+dynamic_cast : transforme un chat en animal ou un animal en chat
+
+reinterpret_cast : reinterprete la zone memoire comme on veut (tres puissant)
