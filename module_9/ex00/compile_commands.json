@@ -1,0 +1,36 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g",
+      "-c",
+      "-o",
+      "main.o",
+      "main.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/module_9/ex00",
+    "file": "/mnt/nfs/homes/dlacuey/module_9/ex00/main.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/module_9/ex00/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g",
+      "-c",
+      "-o",
+      "BitcoinExchange.o",
+      "BitcoinExchange.cpp"
+    ],
+    "directory": "/mnt/nfs/homes/dlacuey/module_9/ex00",
+    "file": "/mnt/nfs/homes/dlacuey/module_9/ex00/BitcoinExchange.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/module_9/ex00/BitcoinExchange.o"
+  }
+]
