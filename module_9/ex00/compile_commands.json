@@ -12,9 +12,9 @@
       "main.o",
       "main.cpp"
     ],
-    "directory": "/mnt/nfs/homes/dlacuey/module_9/ex00",
-    "file": "/mnt/nfs/homes/dlacuey/module_9/ex00/main.cpp",
-    "output": "/mnt/nfs/homes/dlacuey/module_9/ex00/main.o"
+    "directory": "/mnt/nfs/homes/dlacuey/cpps/module_9/ex00",
+    "file": "/mnt/nfs/homes/dlacuey/cpps/module_9/ex00/main.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/cpps/module_9/ex00/main.o"
   },
   {
     "arguments": [
@@ -29,8 +29,8 @@
       "BitcoinExchange.o",
       "BitcoinExchange.cpp"
     ],
-    "directory": "/mnt/nfs/homes/dlacuey/module_9/ex00",
-    "file": "/mnt/nfs/homes/dlacuey/module_9/ex00/BitcoinExchange.cpp",
-    "output": "/mnt/nfs/homes/dlacuey/module_9/ex00/BitcoinExchange.o"
+    "directory": "/mnt/nfs/homes/dlacuey/cpps/module_9/ex00",
+    "file": "/mnt/nfs/homes/dlacuey/cpps/module_9/ex00/BitcoinExchange.cpp",
+    "output": "/mnt/nfs/homes/dlacuey/cpps/module_9/ex00/BitcoinExchange.o"
   }
 ]

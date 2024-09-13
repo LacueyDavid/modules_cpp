@@ -25,7 +25,6 @@ int main(int argc, char *argv[])
 	try
 	{
 		BitcoinExchange exchange(argv[1]);
-		exchange.load();
 		exchange.display();
 	}
 	catch (const std::exception &e)
