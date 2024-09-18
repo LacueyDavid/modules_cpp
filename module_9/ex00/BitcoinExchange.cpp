@@ -20,7 +20,6 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(std::string filename)
 {
-	std::cout << "calling constructor\n";
 	csv_file.open("data.csv");
 	input.open(filename.c_str());
 	if (!csv_file.is_open())
@@ -43,7 +42,6 @@ BitcoinExchange::BitcoinExchange(std::string filename)
 
 BitcoinExchange::~BitcoinExchange()
 {
-	std::cout << "calling destructor\n";
 	if (csv_file.is_open())
 		csv_file.close();
 	if (input.is_open())
@@ -82,20 +80,20 @@ time_t	BitcoinExchange::extract_date_from_current_line_in_csv(const std::string 
 	struct tm dateTime = {};
 	char formattedDate[11];
 	if (strptime(date.c_str(), "%Y-%m-%d", &dateTime) == NULL)
-		throw std::runtime_error("Error: invalid date format in file: data.csv");
+		throw std::runtime_error("Error: bad input => " + date);
 	strftime(formattedDate, sizeof(formattedDate), "%Y-%m-%d", &dateTime);
 	if (date != formattedDate)
-		throw std::runtime_error("Error: invalid date in file: data.csv");
+		throw std::runtime_error("Error: bad input => " + date);
 	int year = dateTime.tm_year + 1900;
 	int month = dateTime.tm_mon + 1;
 	int day = dateTime.tm_mday;
 	bool isLeapYear = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 	int daysInMonth[] = {31, isLeapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	if (day < 1 || day > daysInMonth[month - 1])
-		throw std::runtime_error("Error: invalid day in file: data.csv");
+		throw std::runtime_error("Error: bad input => " + date);
 	time_t timestamp = mktime(&dateTime);
 	if (timestamp == -1)
-		throw std::runtime_error("Error: could not convert date in file: data.csv");
+		throw std::runtime_error("Error: bad input => " + date);
 	return timestamp;
 }
 
@@ -108,29 +106,37 @@ double	BitcoinExchange::extract_value_from_current_line_in_csv(const std::string
 	return toDouble(value);
 }
 
-time_t	BitcoinExchange::extract_date_from_current_line_in_input(const std::string line)
+std::string BitcoinExchange::extractDateStr(const std::string line)
 {
 	std::string date;
+
 	date = line.substr(0, line.find('|'));
 	date = date.substr(0, date.find_last_not_of(' ') + 1);
 	date = date.substr(date.find_first_not_of(' '));
+	return date;
+}
+
+time_t	BitcoinExchange::extract_date_from_current_line_in_input(const std::string line)
+{
+	std::string date;
+	date = extractDateStr(line);
 	struct tm dateTime = {};
 	char formattedDate[11];
 	if (strptime(date.c_str(), "%Y-%m-%d", &dateTime) == NULL)
-		throw std::runtime_error("Error: invalid date format in file: data.csv");
+		throw std::runtime_error("Error: bad input => " + date);
 	strftime(formattedDate, sizeof(formattedDate), "%Y-%m-%d", &dateTime);
 	if (date != formattedDate)
-		throw std::runtime_error("Error: invalid date in file: data.csv");
+		throw std::runtime_error("Error: bad input => " + date);
 	int year = dateTime.tm_year + 1900;
 	int month = dateTime.tm_mon + 1;
 	int day = dateTime.tm_mday;
 	bool isLeapYear = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 	int daysInMonth[] = {31, isLeapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	if (day < 1 || day > daysInMonth[month - 1])
-		throw std::runtime_error("Error: invalid day in file: data.csv");
+		throw std::runtime_error("Error: bad input => " + date);
 	time_t timestamp = mktime(&dateTime);
 	if (timestamp == -1)
-		throw std::runtime_error("Error: could not convert date in file: data.csv");
+		throw std::runtime_error("Error: bad input => " + date);
 	return timestamp;
 }
 
@@ -140,8 +146,49 @@ double	BitcoinExchange::extract_value_from_current_line_in_input(const std::stri
 	value = line.substr(line.find('|') + 1);
 	value = value.substr(value.find_first_not_of(' '));
 	value = value.substr(0, value.find_last_not_of(' ') + 1);
-	return toDouble(value);
+	return toDoubleInput(value);
 }
+
+double BitcoinExchange::toDoubleInput(const std::string& value)
+{
+	char* end;
+	errno = 0;
+
+	double result = std::strtod(value.c_str(), &end);
+	if (errno == ERANGE || *end != '\0')
+		throw std::invalid_argument("Error: invalid input string.");
+	if (result < 0)
+	{
+		throw std::invalid_argument("Error: not a positive number.");
+	}
+	if (result > 1000)
+	{
+		throw std::invalid_argument("Error: too large a number.");
+	}
+
+	return result;
+}
+// double	BitcoinExchange::toDoubleInput(const std::string value)
+// {
+// 	char* end;
+// 	errno = 0;
+//
+// 	double result = std::strtod(value.c_str(), &end);
+// 	if (errno == ERANGE || *end != '\0')
+// 		throw std::invalid_argument("Error: invalid input string");
+// 	if (result < 0)
+// 	{
+// 		std::cerr << "Error: not a positive number\n";
+// 		throw ;
+// 	}
+// 	if (result > 1000)
+// 	{
+// 		std::cerr << "Error: too large a number\n";
+// 		throw ;
+// 	}
+//
+// 	return result;
+// }
 
 double	BitcoinExchange::toDouble(const std::string value)
 {
@@ -151,32 +198,32 @@ double	BitcoinExchange::toDouble(const std::string value)
 	double result = std::strtod(value.c_str(), &end);
 	if (errno == ERANGE || *end != '\0')
 		throw std::invalid_argument("Error: invalid input string");
-	if (result < 0)
-		throw std::out_of_range("Error: value is less than 0");
-	if (result > static_cast<double>(INT_MAX))
-		throw std::out_of_range("Error: value exceeds INT_MAX");
+	// if (result < 0)
+	// 	throw std::out_of_range("Error: value is less than 0");
+	// if (result > static_cast<double>(INT_MAX))
+	// 	throw std::out_of_range("Error: value exceeds INT_MAX");
 
 	return result;
 }
 
 std::string BitcoinExchange::dateToString(time_t date)
 {
-    struct tm *timeinfo = localtime(&date);
-    char buffer[11];
-    strftime(buffer, sizeof(buffer), "%Y-%m-%d", timeinfo);
-    return std::string(buffer);
+	struct tm *timeinfo = localtime(&date);
+	char buffer[11];
+	strftime(buffer, sizeof(buffer), "%Y-%m-%d", timeinfo);
+	return std::string(buffer);
 }
 
 void BitcoinExchange::printValue(std::map<time_t, double>::iterator it, double value)
 {
-	// if (value < 0)
-	// 	std::cerr << "Error: not a positive number.\n";
-	// else if (value > 1000)
-	// 	std::cerr << "Error: number out of scope.\n";
-	// else
-	// 	std::cout << it->second * value << "\n";
-	std::cout << it->second << "\n";
-	(void)value;
+	if (value < 0)
+		std::cerr << "Error: not a positive number.\n";
+	else if (value > 1000)
+		std::cerr << "Error: too large a number.\n";
+	else
+		std::cout << it->second * value << "\n";
+	// std::cout << it->second << "\n";
+	// (void)value;
 }
 
 bool BitcoinExchange::valueNotFoundAt(time_t date)
@@ -184,9 +231,9 @@ bool BitcoinExchange::valueNotFoundAt(time_t date)
 	return valuesAt.find(date) == valuesAt.end();
 }
 
-void BitcoinExchange::printInfos(time_t date, double value)
+void BitcoinExchange::printInfos(time_t date, std::string dateStr, double value)
 {
-	std::cout << dateToString(date) << " => " << value << " = ";
+	std::cout << dateStr << " => " << value << " = ";
 	std::map<time_t, double>::iterator it = valuesAt.find(date);
 	if (valueNotFoundAt(date))
 	{
@@ -215,9 +262,37 @@ void BitcoinExchange::display()
 		throw std::runtime_error("Error: invalid header in input file");
 	while (std::getline(input, line))
 	{
-		time_t date = extract_date_from_current_line_in_input(line);
-		double value = extract_value_from_current_line_in_input(line);
-		printInfos(date, value);
+		try
+		{
+			std::string dateStr = extractDateStr(line);
+			time_t date;
+			double value;
+			try
+			{
+				date = extract_date_from_current_line_in_input(line);
+			}
+			catch (const std::exception &e)
+			{
+				std::cout << e.what() << "\n";
+				continue ;
+			}
+			try
+			{
+				value = extract_value_from_current_line_in_input(line);
+			}
+			catch (const std::exception &e)
+			{
+				std::cout << e.what() << "\n";
+				continue ;
+			}
+			printInfos(date, dateStr, value);
+		}
+		catch(const std::exception &e)
+		{
+			// std::cerr << " => Error: bad input\n" << dateStr;
+			std::cout << e.what() << "\n";
+			continue;
+		}
 	}
 	return ;
 }

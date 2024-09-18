@@ -28,10 +28,12 @@ private:
 	time_t	extract_date_from_current_line_in_input(const std::string line);
 	double	extract_value_from_current_line_in_input(const std::string line);
 	double	toDouble(const std::string value);
+	double	toDoubleInput(const std::string& value);
 	void	printValue(std::map<time_t, double>::iterator it, double value);
 	bool	valueNotFoundAt(time_t date);
-	void	printInfos(time_t date, double value);
+	void	printInfos(time_t date, std::string dateStr, double value);
 	std::string	dateToString(time_t date);
+	std::string extractDateStr(const std::string line);
 
 public:
 	BitcoinExchange(std::string filename);
