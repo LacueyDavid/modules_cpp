@@ -6,7 +6,7 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 21:05:04 by dlacuey           #+#    #+#              #
-#    Updated: 2024/09/20 21:05:00 by dlacuey          ###   ########.fr        #
+#    Updated: 2024/09/20 21:58:01 by dlacuey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 OBJS =																		\
 																			\
 					main.o													\
-					# RPN.o													\
+					RPN.o													\
 																			\
 
 NAME = RPN
