@@ -1,44 +1,88 @@
-#include "RPN.hpp"
+#include <climits>
+#include <iostream>
+#include <stack>
+#include <stdexcept>
+#include <string>
+#include <cctype>
+#include <cstdlib>
 
-/////////////////////// Input Validation Functions //////////
+enum Type { INT, CHAR };
 
-bool isOperator(StackElement elem)
+class StackElement {
+public:
+	Type type;
+	long int intValue;
+	char charValue;
+
+	StackElement(long int value) : type(INT), intValue(value), charValue(0) {}
+	StackElement(char value) : type(CHAR), intValue(0), charValue(value) {}
+};
+
+class RPN {
+public:
+	// Canonical form constructors
+	RPN() {}
+	RPN(const RPN& other) { (void)other; }
+	RPN& operator=(const RPN& other) { (void)other; return *this; }
+	~RPN() {}
+
+	void validateInput(const std::string& input);
+	long int evaluateRPN(const std::string& input);
+
+private:
+	std::stack<StackElement> rpnStack;
+	std::stack<StackElement> operandStack;
+
+	bool isOperator(const StackElement& elem) const;
+	void validateCharacter(char ch) const;
+	void validateInputCharacters(const std::string& input) const;
+	void validateSpacingInInput(const std::string& input) const;
+	long int performOperation(long int a, long int b, char op) const;
+	void executeCalculation();
+	void processOperand();
+	void processOperator();
+	bool isFinalResultReady() const;
+	bool hasTooManyOperands() const;
+	long int getFinalResult() const;
+	void pushElementToStack(char charValue);
+	void parseInputToStack(const std::string& input);
+};
+
+bool RPN::isOperator(const StackElement& elem) const
 {
 	return elem.type == CHAR;
 }
 
-void validateCharacter(char ch)
+void RPN::validateCharacter(char ch) const
 {
-	if (!isdigit(ch) && ch != ' ' && !isOperator(StackElement(ch)))
+	if (!isdigit(ch) && ch != ' ' && !isOperator(ch))
 		throw std::invalid_argument("Error");
 }
 
-void validateInputCharacters(const std::string& input)
+void RPN::validateInputCharacters(const std::string& input) const
 {
 	for (size_t i = 0; i < input.size(); ++i)
 		validateCharacter(input[i]);
 }
 
-void validateSpacingInInput(const std::string& input)
+void RPN::validateSpacingInInput(const std::string& input) const
 {
 	for (size_t i = 0; i < input.size(); ++i)
 	{
 		if (i % 2 == 1 && input[i] != ' ')
 			throw std::invalid_argument("Error");
-		if (i % 2 == 0 && (!isdigit(input[i]) && !isOperator(StackElement(input[i]))))
+		if (i % 2 == 0 && (!isdigit(input[i]) && !isOperator(input[i])))
 			throw std::invalid_argument("Error");
 	}
 }
 
-void validateInput(const std::string& input)
+void RPN::validateInput(const std::string& input)
 {
 	validateInputCharacters(input);
 	validateSpacingInInput(input);
 }
 
-/////////////// Calculation Logic //////////
-
-int performOperation(int a, int b, char op)
+long int RPN::performOperation(long int a, long int b, char op) const
 {
 	switch (op)
 	{
@@ -59,7 +103,7 @@ int performOperation(int a, int b, char op)
 	}
 }
 
-void executeCalculation(std::stack<StackElement>& rpnStack, std::stack<StackElement>& operandStack)
+void RPN::executeCalculation()
 {
 	if (operandStack.size() < 2)
 		throw std::invalid_argument("Error");
@@ -68,91 +112,95 @@ void executeCalculation(std::stack<StackElement>& rpnStack, std::stack<StackElem
 	rpnStack.pop();
 	char op = operatorElem.charValue;
 
-	int b = operandStack.top().intValue;
+	long int b = operandStack.top().intValue;
 	operandStack.pop();
 
-	int a = operandStack.top().intValue;
+	long int a = operandStack.top().intValue;
 	operandStack.pop();
 
-	int result = performOperation(a, b, op);
-	operandStack.push(StackElement(result));
+	long int result = performOperation(a, b, op);
+	operandStack.push(result);
 }
 
-void processOperand(std::stack<StackElement>& rpnStack, std::stack<StackElement>& operandStack)
+void RPN::processOperand()
 {
+	if (rpnStack.empty())
+		throw std::invalid_argument("Error");
 	operandStack.push(rpnStack.top());
 	rpnStack.pop();
 }
 
-void processOperator(std::stack<StackElement>& rpnStack, std::stack<StackElement>& operandStack)
+void RPN::processOperator()
 {
-	executeCalculation(rpnStack, operandStack);
+	if (rpnStack.empty())
+		throw std::invalid_argument("Error");
+	executeCalculation();
 }
 
-bool isFinalResultReady(const std::stack<StackElement>& rpnStack, const std::stack<StackElement>& operandStack)
+bool RPN::isFinalResultReady() const
 {
 	return rpnStack.empty() && operandStack.size() == 1;
 }
 
-bool hasTooManyOperands(const std::stack<StackElement>& rpnStack, const std::stack<StackElement>& operandStack)
+bool RPN::hasTooManyOperands() const
 {
 	return rpnStack.empty() && operandStack.size() > 1;
 }
 
-int getFinalResult(const std::stack<StackElement>& operandStack)
+long int RPN::getFinalResult() const
 {
+	if (operandStack.empty())
+		throw std::invalid_argument("Error");
 	StackElement result = operandStack.top();
 	if (result.type == INT)
+	{
+		if (result.intValue > INT_MAX)
+			throw std::invalid_argument("Error");
 		return result.intValue;
+	}
 	else
 		throw std::invalid_argument("Error");
 }
 
-int evaluateRPN(std::stack<StackElement> rpnStack)
+long int RPN::evaluateRPN(const std::string& input)
 {
-	std::stack<StackElement> operandStack;
+	validateInput(input);
+	parseInputToStack(input);
 
 	while (!rpnStack.empty())
 	{
 		if (!isOperator(rpnStack.top()))
-			processOperand(rpnStack, operandStack);
+			processOperand();
 		else
-			processOperator(rpnStack, operandStack);
-		if (isFinalResultReady(rpnStack, operandStack))
-			return getFinalResult(operandStack);
-		else if (hasTooManyOperands(rpnStack, operandStack))
+			processOperator();
+		if (isFinalResultReady())
+			return getFinalResult();
+		else if (hasTooManyOperands())
 			throw std::invalid_argument("Error");
 	}
 
 	throw std::invalid_argument("Error");
 }
 
-//////////////////// Stack Filling with Input //////////
-
-void pushElementToStack(std::stack<StackElement>& rpnStack, char charValue)
+void RPN::pushElementToStack(char charValue)
 {
 	if (isdigit(charValue))
 	{
-		int intValue = charValue - '0';
-		rpnStack.push(StackElement(intValue));
+		long int intValue = charValue - '0';
+		rpnStack.push(intValue);
 	}
 	else
-		rpnStack.push(StackElement(charValue));
+		rpnStack.push(charValue);
 }
 
-std::stack<StackElement> parseInputToStack(const std::string& input)
+void RPN::parseInputToStack(const std::string& input)
 {
-	std::stack<StackElement> rpnStack;
-
-	for (int count = input.size() - 1; count >= 0; --count)
+	for (int i = input.size() - 1; i >= 0; --i)
 	{
-		if (count % 2 == 0)
-			pushElementToStack(rpnStack, input[count]);
+		if (i % 2 == 0)
+			pushElementToStack(input[i]);
 	}
-	return rpnStack;
 }
-
-/////////////////////// Main //////////
 
 int main(int argc, char **argv)
 {
@@ -162,11 +210,11 @@ int main(int argc, char **argv)
 		return EXIT_FAILURE;
 	}
 
+	RPN rpn;
+
 	try
 	{
-		validateInput(argv[1]);
-		std::stack<StackElement> rpnStack = parseInputToStack(argv[1]);
-		int result = evaluateRPN(rpnStack);
+		long int result = rpn.evaluateRPN(argv[1]);
 		std::cout << "Result: " << result << "\n";
 	}
 	catch (const std::exception& e)
