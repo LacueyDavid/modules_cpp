@@ -6,7 +6,7 @@
 #    By: jdenis <jdenis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 21:05:04 by dlacuey           #+#    #+#              #
-#    Updated: 2024/09/21 00:02:51 by dlacuey          ###   ########.fr        #
+#    Updated: 2024/09/26 11:03:25 by dlacuey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,10 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 OBJS =																		\
 																			\
 					main.o													\
+					PmergeMe.o												\
 																			\
 
-NAME = RPN
+NAME = PmergeMe
 
 all: $(NAME)
 
